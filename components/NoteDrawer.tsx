@@ -10,7 +10,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
-import { HatGlasses, UserRoundPlus, UserRoundX } from "lucide-react";
+import { HatGlasses } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 
 type NoteDrawerProps = {
@@ -31,9 +31,9 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
             <div className="flex flex-col gap-4 justify-center items-center">
               <div className="flex flex-col justify-center items-start gap-1 w-90 leading-normal ">
                 <Input placeholder="Your name if you may" />
-                <div className="pl-3 flex items-center gap-1 text-sm text-gray-500">
+                <div className="pl-3 flex items-center gap-1 text-sm text-gray-700">
                   <HatGlasses className="h-4 w-4" /> Stay anonymous if you want,
-                  we won't judge.
+                  we won&apos;t judge.
                 </div>
               </div>
               <div className="flex items-center w-90 leading-normal ">

@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-lg flex-col">
+    <main className="mx-auto flex min-h-screen max-w-4xl flex-col">
       <Hero
         onSelect={handleSelect}
         onLeaveNote={() => setNoteDrawerOpen(true)}
