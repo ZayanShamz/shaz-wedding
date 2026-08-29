@@ -55,10 +55,10 @@
   --color-midnight-purple: var(--midnight-purple);
   --color-crimson-violet: var(--crimson-violet);
   --color-midnight-violet: var(--midnight-violet);
+  --color-choco-plum: var(--choco-plum);
 
-  --color-choco-plum: var(--choco-plum)
-    /*  clamp(MIN, VIEWPORT-RELATIVE, MAX) */
-    --text-fluid-xs: clamp(0.7rem, 0.65rem + 0.3vw, 0.875rem);
+  /*  clamp(MIN, VIEWPORT-RELATIVE, MAX) */
+  --text-fluid-xs: clamp(0.7rem, 0.65rem + 0.3vw, 0.875rem);
   --text-fluid-sm: clamp(0.8rem, 0.75rem + 0.35vw, 1rem);
   --text-fluid-base: clamp(0.95rem, 0.9rem + 0.4vw, 1.125rem);
   --text-fluid-lg: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
