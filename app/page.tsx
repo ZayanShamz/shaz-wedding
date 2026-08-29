@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <div className="pointer-events-none fixed inset-3 z-40 border-2 border-[#4C3032]" />
-      <main className="mx-auto flex flex-col items-center min-h-dvh w-full">
+      <main className="mx-auto flex flex-col items-center w-full">
         <Hero
           onSelect={handleSelect}
           onLeaveNote={() => setNoteDrawerOpen(true)}

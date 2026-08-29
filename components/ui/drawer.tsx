@@ -37,7 +37,7 @@ function DrawerOverlay({
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/30 supports-backdrop-filter:backdrop-blur-sm",
+        "fixed inset-0 z-50 bg-black/30 supports-backdrop-filter:backdrop-blur-md",
         "data-open:animate-in data-open:fade-in-75 data-closed:animate-out data-closed:fade-out-0",
         className,
       )}
@@ -58,9 +58,10 @@ function DrawerContent({
         data-slot="drawer-content"
         className={cn(
           "group/drawer-content fixed z-50 flex h-auto flex-col bg-transparent p-4 text-sm",
-          "before:absolute before:inset-3.5 before:-z-10 before:rounded-4xl before:border before:border-border before:bg-black/5 before:backdrop-blur-3xl before:shadow-3xl",
-          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 md:data-[vaul-drawer-direction=bottom]:bottom-20 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh]",
-          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh]",
+          "before:absolute before:inset-3.5 before:-z-10 before:rounded-4xl before:border before:border-black/10",
+          "before:bg-black/5 before:backdrop-blur-2xl before:shadow-2xl befor:shadow-black/30",
+          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 md:data-[vaul-drawer-direction=bottom]:bottom-20",
+          "data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh]",
           className,
         )}
         {...props}
@@ -76,10 +77,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-header"
-      className={cn(
-        "flex flex-col gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-left",
-        className,
-      )}
+      className={cn("flex flex-col gap-0.5 p-4 text-center", className)}
       {...props}
     />
   );

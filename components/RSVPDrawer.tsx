@@ -53,7 +53,11 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
       <Drawer open={open} onOpenChange={onOpenChange}>
         <DrawerContent className="mx-auto max-w-lg w-full">
           <DrawerHeader>
-            <DrawerTitle>Scribble your name in History</DrawerTitle>
+            <DrawerTitle>
+              <p className="text-fluid-lg font-cg font-semibold text-midnight-purple">
+                Scribble your names
+              </p>
+            </DrawerTitle>
             <DrawerDescription></DrawerDescription>
           </DrawerHeader>
           <div className="no-scrollbar overflow-y-auto p-4">
@@ -104,7 +108,7 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
                   <p
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={handleAdd}
-                    className="text-sm text-white cursor-pointer"
+                    className="text-sm text-white/50 cursor-pointer hover:underline"
                   >
                     Add more guests{" "}
                     <MoveRight className="inline-block ms-0.5 h-full w-4" />
@@ -116,7 +120,8 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
           <DrawerFooter>
             <DrawerClose asChild>
               <Button
-                className="bg-transparent text-foreground hover:bg-muted/80 py-5 px-10 cursor-pointer"
+                className="bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-10 cursor-pointer
+                focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple"
                 variant="outline"
                 onClick={handleSkip}
               >
@@ -124,7 +129,8 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
               </Button>
             </DrawerClose>
             <Button
-              className="bg-black/60 text-amber-50 border-black/60 hover:bg-black/10 hover:backdrop-blur-3xl hover:text-amber-50 py-5 px-10 cursor-pointer"
+              className="bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
+                focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple py-5 px-10 cursor-pointer"
               variant="outline"
             >
               Submit

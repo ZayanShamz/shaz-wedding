@@ -52,9 +52,13 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-pastel-green: var(--pastel-green);
   --color-burn-pink: var(--burn-pink);
+  --color-midnight-purple: var(--midnight-purple);
+  --color-crimson-violet: var(--crimson-violet);
+  --color-midnight-violet: var(--midnight-violet);
 
-  /*  clamp(MIN, VIEWPORT-RELATIVE, MAX) */
-  --text-fluid-xs: clamp(0.7rem, 0.65rem + 0.3vw, 0.875rem);
+  --color-choco-plum: var(--choco-plum)
+    /*  clamp(MIN, VIEWPORT-RELATIVE, MAX) */
+    --text-fluid-xs: clamp(0.7rem, 0.65rem + 0.3vw, 0.875rem);
   --text-fluid-sm: clamp(0.8rem, 0.75rem + 0.35vw, 1rem);
   --text-fluid-base: clamp(0.95rem, 0.9rem + 0.4vw, 1.125rem);
   --text-fluid-lg: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
@@ -98,6 +102,10 @@
   --foreground: rgb(10, 10, 10);
   --pastel-green: #8d9779;
   --burn-pink: #ece2e0;
+  --crimson-violet: #541d3a;
+  --midnight-purple: #3c152a;
+  --midnight-violet: #250d1a;
+  --choco-plum: #4c3032;
 }
 
 .dark {

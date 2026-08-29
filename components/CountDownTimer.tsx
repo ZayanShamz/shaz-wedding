@@ -51,11 +51,11 @@ function CountDownTimer() {
   ];
 
   return (
-    <div className="grid grid-flow-col gap-4 text-center auto-cols-max md:mt-5">
+    <div className="grid grid-flow-col gap-4 text-center auto-cols-max md:my-5">
       {units.map(({ label, value }) => (
         <div
           key={label}
-          className="flex flex-col items-center gap-1 rounded-md bg-[#5D343B] px-3 py-2 text-background"
+          className="flex flex-col items-center gap-1 rounded-md bg-crimson-violet px-3 py-2 text-background"
         >
           <span
             key={value}
