@@ -20,13 +20,16 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-4xl flex-col">
-      <Hero
-        onSelect={handleSelect}
-        onLeaveNote={() => setNoteDrawerOpen(true)}
-      />
-      <RSVPDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
-      <NoteDrawer open={noteDrawerOpen} onOpenChange={setNoteDrawerOpen} />
-    </main>
+    <>
+      <div className="pointer-events-none fixed inset-3 z-40 border-2 border-[#4C3032]" />
+      <main className="mx-auto flex flex-col items-center min-h-dvh w-full">
+        <Hero
+          onSelect={handleSelect}
+          onLeaveNote={() => setNoteDrawerOpen(true)}
+        />
+        <RSVPDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
+        <NoteDrawer open={noteDrawerOpen} onOpenChange={setNoteDrawerOpen} />
+      </main>
+    </>
   );
 }

@@ -1,9 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Pinyon_Script,
+  Emilys_Candy,
+  Amiri,
+  Cormorant_Garamond,
+} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+const pinyonScript = Pinyon_Script({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pinyon-script",
+});
+const cormorantGaramond = Cormorant_Garamond({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-cormorant-garamond",
+});
+
+const emilysCandy = Emilys_Candy({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-emilys-candy",
+});
+
+const amiri = Amiri({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-amiri",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +62,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         geistMono.variable,
         "font-sans",
         inter.variable,
+        pinyonScript.variable,
+        emilysCandy.variable,
+        amiri.variable,
+        cormorantGaramond.variable,
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>

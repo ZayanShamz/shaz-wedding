@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -10,10 +10,9 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
-import { UserRoundPlus, UserRoundX } from "lucide-react";
+import { MoveRight, UserMinus, UserPlus } from "lucide-react";
 
 type RsvpDrawerProps = {
   open: boolean;
@@ -23,6 +22,9 @@ type RsvpDrawerProps = {
 function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
   const [currentName, setCurrentName] = useState("");
   const [names, setNames] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const hasAddedFirstName = names.length > 0;
 
   const handleAdd = () => {
     const trimmed = currentName.trim();
@@ -30,6 +32,7 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
 
     setNames((prev) => [...prev, trimmed]);
     setCurrentName("");
+    inputRef.current?.focus();
   };
 
   const updateAddedName = (index: number, value: string) => {
@@ -38,6 +41,11 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
 
   const removeAddedName = (index: number) => {
     setNames((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleSkip = () => {
+    setNames([]);
+    setCurrentName("");
   };
 
   return (
@@ -50,8 +58,27 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
           </DrawerHeader>
           <div className="no-scrollbar overflow-y-auto p-4">
             <div className="flex flex-col gap-4 justify-center items-center">
+              {names.map((name, index) => (
+                <div
+                  key={index}
+                  className="relative flex items-center w-90 leading-normal"
+                >
+                  <Input
+                    type="text"
+                    className="w-full pr-10"
+                    value={name}
+                    onChange={(e) => updateAddedName(index, e.target.value)}
+                  />
+                  <UserMinus
+                    aria-label="Remove name"
+                    className="absolute right-3 h-5 w-5 cursor-pointer"
+                    onClick={() => removeAddedName(index)}
+                  />
+                </div>
+              ))}
               <div className="relative flex items-center w-90 leading-normal ">
                 <Input
+                  ref={inputRef}
                   type="text"
                   placeholder="Your name if you may"
                   className="w-full pr-10"
@@ -64,29 +91,26 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
                     }
                   }}
                 />
-                <UserRoundPlus
-                  className="absolute right-3 h-5 w-5 cursor-pointer"
-                  onClick={handleAdd}
-                />
-              </div>
-              {names.map((name, index) => (
-                <div
-                  key={index}
-                  className="relative flex items-center w-90 leading-normal"
-                >
-                  <Input
-                    type="text"
-                    className="w-full pr-10"
-                    value={name}
-                    onChange={(e) => updateAddedName(index, e.target.value)}
-                  />
-                  <UserRoundX
-                    aria-label="Remove name"
+                {hasAddedFirstName && (
+                  <UserPlus
                     className="absolute right-3 h-5 w-5 cursor-pointer"
-                    onClick={() => removeAddedName(index)}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={handleAdd}
                   />
+                )}
+              </div>
+              {!hasAddedFirstName && (
+                <div className="w-90 flex items-center justify-end">
+                  <p
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={handleAdd}
+                    className="text-sm text-white cursor-pointer"
+                  >
+                    Add more guests{" "}
+                    <MoveRight className="inline-block ms-0.5 h-full w-4" />
+                  </p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
           <DrawerFooter>
@@ -94,6 +118,7 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
               <Button
                 className="bg-transparent text-foreground hover:bg-muted/80 py-5 px-10 cursor-pointer"
                 variant="outline"
+                onClick={handleSkip}
               >
                 Skip
               </Button>
