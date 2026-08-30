@@ -31,7 +31,7 @@ function Hero({ onSelect, onLeaveNote }: HeroProps) {
             <p className="font-cg font-bold text-fluid-2xl text-midnight-purple tracking-wider leading-none">
               SHAZ SHAHUL
             </p>
-            <p className="font-cg italic font-medium text-fluid-sm text-zinc-600">
+            <p className="font-cg italic font-medium text-fluid-base text-zinc-600">
               S/O P P Shahul Hameed And Absath Mullaveetil
             </p>
           </div>
@@ -53,7 +53,7 @@ function Hero({ onSelect, onLeaveNote }: HeroProps) {
         </p>
         <div className="w-full flex justify-center items-start gap-4 md:gap-20 px-5 mt-3">
           <a
-            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding&dates=20261004T063000Z/20261004T103000Z&details=Join+us+for+our+wedding&location=Airport+Garden+Convention+Center%2C+Karipur"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shaz+and+Renna+Wedding&dates=20261004T043000Z/20261004T083000Z&details=Join+us+for+our+wedding&location=Airport+Garden+Convention+Center%2C+Karipur"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex flex-col justify-center items-center cursor-pointer"
