@@ -18,8 +18,6 @@ type RsvpTabsProps = {
 function RsvpTabs({ guests, notes, declines }: RsvpTabsProps) {
   const [activeTab, setActiveTab] = useState<Tab>("guests");
 
-  console.log(notes);
-
   const tabs: Tab[] = ["guests", "messages", "declines"];
   const activeIndex = tabs.indexOf(activeTab);
 

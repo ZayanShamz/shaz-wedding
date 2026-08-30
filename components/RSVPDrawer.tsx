@@ -69,7 +69,6 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
   const handleSubmit = async () => {
     setError("");
     setSubmitting(true);
-    console.log("submitting");
 
     const trimmedCurrent = currentName.trim();
     const finalNames = trimmedCurrent ? [...names, trimmedCurrent] : names;
@@ -82,7 +81,6 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
         names: finalNames,
         timestamp: serverTimestamp(),
       });
-      console.log("submitted");
       setSubmitted(true);
     } catch (err) {
       console.log(err);
