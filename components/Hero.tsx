@@ -7,9 +7,9 @@ import CountDownTimer from "./CountDownTimer";
 import {
   Calendar,
   CalendarHeart,
-  ExternalLink,
   Link,
   MapPinned,
+  PencilLine,
   UserRound,
 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -96,7 +96,7 @@ function Hero({ onSelect, onLeaveNote }: HeroProps) {
             <div className="bg-crimson-violet rounded-3xl p-5 mb-2 shadow-xl">
               <CalendarHeart className="text-background h-8 w-8 md:h-10 md:w-10" />
             </div>
-            <p className="font-cg font-semibold leading-tight text-midnight-purple text-fluid-xs">
+            <p className="font-cg font-semibold leading-tight text-midnight-purple text-fluid-sm">
               04 OCT 2026 <br />
               At 10 AM
             </p>
@@ -159,10 +159,10 @@ function Hero({ onSelect, onLeaveNote }: HeroProps) {
           <button
             type="button"
             onClick={onLeaveNote}
-            className="font-candy text-fluid-sm cursor-pointer underline underline-offset-3"
+            className="font-cg font-semibold text-crimson-violet text-fluid-base cursor-pointer underline underline-offset-3"
           >
             Leave a note for the couple{" "}
-            <ExternalLink className="inline-block h-3.5 w-3.5 mb-1" />
+            <PencilLine className="inline-block h-3.5 w-3.5" />
           </button>
         </div>
         <div className="hidden md:flex absolute bottom-7 right-7 ">

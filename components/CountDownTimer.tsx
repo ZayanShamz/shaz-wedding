@@ -45,17 +45,17 @@ function CountDownTimer() {
 
   const units: { label: string; value: number }[] = [
     { label: "days", value: display.days },
-    { label: "hours", value: display.hours },
+    { label: "hrs", value: display.hours },
     { label: "min", value: display.minutes },
     { label: "sec", value: display.seconds },
   ];
 
   return (
-    <div className="grid grid-flow-col gap-4 text-center auto-cols-max md:my-5">
+    <div className="grid grid-flow-col auto-cols-fr gap-4 text-center md:my-5">
       {units.map(({ label, value }) => (
         <div
           key={label}
-          className="flex flex-col items-center gap-1 rounded-md bg-crimson-violet px-3 py-2 text-background"
+          className="flex min-w-10 flex-col items-center gap-1 rounded-md bg-crimson-violet px-3 py-2 text-background"
         >
           <span
             key={value}
