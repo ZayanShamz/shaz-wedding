@@ -123,8 +123,11 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
             <div className="bg-crimson-violet rounded-3xl p-5 cursor-pointer mb-2 shadow-lg">
               <MapPinned className="text-background h-8 w-8 md:h-10 md:w-10" />
             </div>
-            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
-              Airport Garden Convention Center, Karipur
+            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base text-center">
+              Airport Garden <br />
+              <span className="whitespace-nowrap">
+                Convention Cntr, Karipur
+              </span>
             </p>
             <p className="font-mono cursor-pointer text-fluid-sm text-gray-600">
               Open in Maps
