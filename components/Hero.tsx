@@ -118,12 +118,12 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
             href="https://maps.app.goo.gl/JoyyoUn8gNfYwEi78"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex flex-col min-w-0 justify-center items-center cursor-pointer  border-red-500 border-2"
+            className="flex-1 flex flex-col min-w-0 justify-center items-center cursor-pointer"
           >
             <div className="bg-crimson-violet rounded-3xl p-5 cursor-pointer mb-2 shadow-lg">
               <MapPinned className="text-background h-8 w-8 md:h-10 md:w-10" />
             </div>
-            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base text-center">
+            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
               Airport Garden Convention Center, Karipur
             </p>
             <p className="font-mono cursor-pointer text-fluid-sm text-gray-600">
