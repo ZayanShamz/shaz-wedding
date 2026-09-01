@@ -62,33 +62,41 @@ export default async function AdminPage({ params }: PageProps) {
   const messageCount = notes.length;
 
   return (
-    <main className="mx-auto max-w-2xl md:min-w-xl p-6">
-      <h1 className="text-midnight-violet text-fluid-2xl font-cg font-semibold mb-6 text-center cursor-default">
-        RSVP Summary
-      </h1>
+    <main className="flex flex-col items-center w-full">
+      <div className="w-full max-w-xl md:min-w-xl p-6">
+        <h1 className="text-midnight-violet text-fluid-xl font-cg font-semibold mb-4 text-center cursor-default">
+          RSVP Summary
+        </h1>
 
-      <div className="grid grid-cols-4 gap-4 mb-8 cursor-default">
-        <div className="rounded-lg border py-4 text-center bg-midnight-purple">
-          <p className="text-burn-pink text-3xl font-bold">{totalGuests}</p>
-          <p className="text-sm text-burn-pink/70 sm:px-3">Total guests</p>
+        <div className="grid grid-cols-4 gap-4 mb-6 cursor-default">
+          <div className="rounded-lg border py-2 text-center bg-midnight-purple">
+            <p className="text-fluid-lg text-burn-pink font-bold">
+              {totalGuests}
+            </p>
+            <p className="text-fluid-xs text-burn-pink/70 sm:px-3">Actions</p>
+          </div>
+          <div className="rounded-lg border py-2 text-center bg-midnight-purple">
+            <p className="text-fluid-lg text-burn-pink text-center font-bold">
+              {attendingCount}
+            </p>
+            <p className="text-fluid-xs text-burn-pink/70 sm:px-3">Accepts</p>
+          </div>
+          <div className="rounded-lg border py-2 text-center bg-midnight-purple">
+            <p className="text-fluid-lg text-burn-pink font-bold">
+              {decliningCount}
+            </p>
+            <p className="text-fluid-xs text-burn-pink/70 sm:px-3">Declines</p>
+          </div>
+          <div className="rounded-lg border py-2 text-center bg-midnight-purple">
+            <p className="text-fluid-lg text-burn-pink font-bold">
+              {messageCount}
+            </p>
+            <p className="text-fluid-xs text-burn-pink/70 sm:px-3">Mssgs</p>
+          </div>
         </div>
-        <div className="rounded-lg border py-4 text-center bg-midnight-purple">
-          <p className="text-burn-pink text-center text-3xl font-bold">
-            {attendingCount}
-          </p>
-          <p className="text-sm text-burn-pink/70 sm:px-3">Accepted</p>
-        </div>
-        <div className="rounded-lg border py-4 text-center bg-midnight-purple">
-          <p className="text-3xl text-burn-pink font-bold">{decliningCount}</p>
-          <p className="text-sm text-burn-pink/70 sm:px-3">Declined</p>
-        </div>
-        <div className="rounded-lg border py-4 text-center bg-midnight-purple">
-          <p className="text-3xl text-burn-pink font-bold">{messageCount}</p>
-          <p className="text-sm text-burn-pink/70 sm:px-3">Messages</p>
-        </div>
+
+        <RsvpTabs guests={allGuests} notes={notes} declines={declines} />
       </div>
-
-      <RsvpTabs guests={allGuests} notes={notes} declines={declines} />
     </main>
   );
 }
