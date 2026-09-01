@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { hasAlreadySubmitted, markAsSubmitted } from "@/lib/rsvp-storage";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -23,15 +22,18 @@ const MESSAGE_MAX_LENGTH = 500;
 type DeclineDrawerProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onSubmitted: () => void;
 };
 
-function DeclineDrawer({ open, onOpenChange }: DeclineDrawerProps) {
+function DeclineDrawer({
+  open,
+  onOpenChange,
+  onSubmitted,
+}: DeclineDrawerProps) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
-  const [alreadySubmitted] = useState(hasAlreadySubmitted);
 
   const handleClose = () => {
     setName("");
@@ -51,7 +53,7 @@ function DeclineDrawer({ open, onOpenChange }: DeclineDrawerProps) {
         message: trimmedMessage || null,
         timestamp: serverTimestamp(),
       });
-      markAsSubmitted();
+      onSubmitted();
       setSubmitted(true);
     } catch (err) {
       console.error(err);
@@ -59,26 +61,6 @@ function DeclineDrawer({ open, onOpenChange }: DeclineDrawerProps) {
       setSubmitting(false);
     }
   };
-
-  if (alreadySubmitted) {
-    return (
-      <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent className="mx-auto max-w-lg w-full">
-          <DrawerHeader>
-            <DrawerTitle>
-              <p className="text-fluid-lg font-cg font-semibold text-midnight-purple">
-                You&apos;ve already RSVP&apos;d
-              </p>
-            </DrawerTitle>
-            <DrawerDescription className="text-fluid-sm text-zinc-600">
-              Thanks, we&apos;ve already got your response. Reach out to us
-              directly if you need to make a change.
-            </DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
-    );
-  }
 
   if (submitted) {
     return (

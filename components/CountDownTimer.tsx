@@ -52,18 +52,18 @@ function CountDownTimer() {
 
   return (
     <div className="grid grid-flow-col auto-cols-fr gap-4 text-center md:my-5">
-      {units.map(({ label, value }) => (  
+      {units.map(({ label, value }) => (
         <div
           key={label}
-          className="flex min-w-10 flex-col items-center gap-1 rounded-md bg-crimson-violet px-3 py-2 text-background"
+          className="flex min-w-10 flex-col items-center gap-1 rounded-md bg-crimson-violet px-2 py-1 text-background"
         >
           <span
             key={value}
-            className="font-mono text-fluid-lg tabular-nums transition-all duration-300 ease-out"
+            className="font-charis text-fluid-lg md:text-3xl tabular-nums transition-all duration-300 ease-out"
           >
             {String(value).padStart(2, "0")}
           </span>
-          <span className="text-xs uppercase tracking-wide opacity-80">
+          <span className="font-cg font-medium text-fluid-sm uppercase tracking-wide opacity-80">
             {label}
           </span>
         </div>

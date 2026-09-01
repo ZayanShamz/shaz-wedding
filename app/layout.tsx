@@ -7,17 +7,24 @@ import {
   Emilys_Candy,
   Amiri,
   Cormorant_Garamond,
+  Charis_SIL,
 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
+const charisSil = Charis_SIL({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-charis-sil",
+});
 const pinyonScript = Pinyon_Script({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-pinyon-script",
 });
+
 const cormorantGaramond = Cormorant_Garamond({
   weight: "400",
   subsets: ["latin"],
@@ -31,8 +38,8 @@ const emilysCandy = Emilys_Candy({
 });
 
 const amiri = Amiri({
-  weight: "400",
-  subsets: ["latin"],
+  weight: ["400", "700"],
+  subsets: ["latin", "arabic"],
   variable: "--font-amiri",
 });
 
@@ -63,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "font-sans",
         inter.variable,
         pinyonScript.variable,
+        charisSil.variable,
         emilysCandy.variable,
         amiri.variable,
         cormorantGaramond.variable,

@@ -6,17 +6,27 @@ import RSVPDrawer from "@/components/RSVPDrawer";
 import NoteDrawer from "@/components/NoteDrawer";
 import DeclineDrawer from "@/components/DeclineDrawer";
 
+import { hasAlreadySubmitted, markAsSubmitted } from "@/lib/rsvp-storage";
+
 export default function Home() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [declineDrawerOpen, setDeclineDrawerOpen] = useState(false);
   const [noteDrawerOpen, setNoteDrawerOpen] = useState(false);
+  const [alreadyResponded, setAlreadyResponded] = useState(hasAlreadySubmitted);
 
   const handleSelect = (value: "yes" | "no") => {
+    if (alreadyResponded) return;
+
     if (value === "yes") {
       setDrawerOpen(true);
     } else {
       setDeclineDrawerOpen(true);
     }
+  };
+
+  const handleResponded = () => {
+    markAsSubmitted();
+    setAlreadyResponded(true);
   };
 
   return (
@@ -26,11 +36,17 @@ export default function Home() {
         <Hero
           onSelect={handleSelect}
           onLeaveNote={() => setNoteDrawerOpen(true)}
+          alreadyResponded={alreadyResponded}
         />
-        <RSVPDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
+        <RSVPDrawer
+          open={drawerOpen}
+          onOpenChange={setDrawerOpen}
+          onSubmitted={handleResponded}
+        />
         <DeclineDrawer
           open={declineDrawerOpen}
           onOpenChange={setDeclineDrawerOpen}
+          onSubmitted={handleResponded}
         />
         <NoteDrawer open={noteDrawerOpen} onOpenChange={setNoteDrawerOpen} />
       </main>

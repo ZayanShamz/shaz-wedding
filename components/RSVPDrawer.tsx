@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { hasAlreadySubmitted, markAsSubmitted } from "@/lib/rsvp-storage";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,9 +20,10 @@ import { Minus, MoveRight, Plus, UserMinus, UserPlus } from "lucide-react";
 type RsvpDrawerProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onSubmitted: () => void;
 };
 
-function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
+function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
   const [currentName, setCurrentName] = useState("");
   const [names, setNames] = useState<string[]>([]);
   const [guestCount, setGuestCount] = useState(1);
@@ -31,8 +31,6 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const [alreadySubmitted] = useState(hasAlreadySubmitted);
 
   const hasAddedFirstName = names.length > 0;
 
@@ -84,7 +82,7 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
         names: finalNames,
         timestamp: serverTimestamp(),
       });
-      markAsSubmitted();
+      onSubmitted();
       setSubmitted(true);
     } catch (err) {
       console.log(err);
@@ -93,26 +91,6 @@ function RSVPDrawer({ open, onOpenChange }: RsvpDrawerProps) {
       setSubmitting(false);
     }
   };
-
-  if (alreadySubmitted) {
-    return (
-      <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent className="mx-auto max-w-lg w-full">
-          <DrawerHeader>
-            <DrawerTitle>
-              <p className="text-fluid-lg font-cg font-semibold text-midnight-purple">
-                You&apos;ve already RSVP&apos;d
-              </p>
-            </DrawerTitle>
-            <DrawerDescription className="text-fluid-sm text-zinc-600">
-              Thanks, we&apos;ve already got your response. Reach out to us
-              directly if you need to make a change.
-            </DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
-    );
-  }
 
   if (submitted) {
     return (
