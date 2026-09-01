@@ -62,7 +62,7 @@ function RsvpTabs({ guests, notes, declines }: RsvpTabsProps) {
 
       {activeTab === "guests" && (
         <div className="overflow-x-auto rounded-xl border border-midnight-purple shadow-xl cursor-pointer">
-          <table className="w-full text-sm text-left">
+          <table className="w-full text-sm text-left backdrop-blur-xs">
             <caption className="mt-4 text-base">Guest List</caption>
             <tbody>
               {guests.map((guest, i) => (
