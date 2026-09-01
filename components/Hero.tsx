@@ -34,7 +34,7 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
   // }, [selectedBackground]);
 
   return (
-    <section className="flex h-dvh md:max-w-3xl flex-col">
+    <section className="flex h-dvh w-full md:max-w-2xl flex-col">
       <div className="flex flex-1 flex-col items-center justify-evenly text-center">
         {/* <div className="flex flex-row gap-2">
           {[1, 2, 3, 4, 5, 6].map((number) => {
@@ -84,7 +84,7 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
             </p>
           </div>
         </div>
-        <p className="font-cg font-medium text-fluid-md tracking-wide text-zinc-800 md:my-4 leading-tight">
+        <p className="font-charis font-medium text-fluid-md tracking-wide text-zinc-800 md:my-4 leading-tight">
           together with our families,
           <br className="md:hidden block" /> we invite you to our Nikkah
         </p>
@@ -98,11 +98,11 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
             <div className="bg-crimson-violet rounded-3xl p-5 mb-2 shadow-lg">
               <CalendarHeart className="text-background h-8 w-8 md:h-10 md:w-10" />
             </div>
-            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base">
+            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base text-center">
               04 OCT 2026 <br />
-              At 10 AM
+              <span className="whitespace-nowrap">At 10 AM</span>
             </p>
-            <p className="font-mono cursor-pointer text-fluid-sm text-gray-600">
+            <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
               Add to Calendar
               <Calendar className="inline-block ms-1 h-full w-3" />
             </p>
@@ -129,7 +129,7 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
                 Convention Cntr, Karipur
               </span>
             </p>
-            <p className="font-mono cursor-pointer text-fluid-sm text-gray-600">
+            <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
               Open in Maps
               <Link className="inline-block ms-1 h-full w-3" />
             </p>
@@ -143,9 +143,9 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
       <div className="w-full self-center pb-5 mb-3">
         <div className="flex flex-col gap-2 ">
           {alreadyResponded ? (
-            <span className="font-candy text-fluid-sm text-center text-gray-600">
+            <span className="font-cg text-fluid-md text-center text-gray-600">
               You&apos;ve already responded, thank you!{" "}
-              <Heart className="inline-block h-[1em] w-[1em] text-crimson-violet fill-crimson-violet" />
+              <Heart className="inline-block h-full w-4 text-crimson-violet fill-crimson-violet mb-1" />
             </span>
           ) : (
             <>
