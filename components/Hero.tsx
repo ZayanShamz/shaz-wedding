@@ -1,7 +1,5 @@
 "use client";
 
-// import { useEffect, useState } from "react";
-// import { backgrounds } from "@/app/backgrounds/backgrounds";
 import CountDownTimer from "./CountDownTimer";
 
 import {
@@ -23,44 +21,14 @@ type HeroProps = {
 };
 
 function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
-  // const [selectedBackground, setSelectedBackground] = useState(0);
-
-  // useEffect(() => {
-  //   document.body.style.backgroundImage = backgrounds[selectedBackground];
-
-  //   return () => {
-  //     document.body.style.backgroundImage = "";
-  //   };
-  // }, [selectedBackground]);
-
   return (
-    <section className="flex h-dvh w-full md:max-w-2xl flex-col">
-      <div className="flex flex-1 flex-col items-center justify-evenly text-center">
-        {/* <div className="flex flex-row gap-2">
-          {[1, 2, 3, 4, 5, 6].map((number) => {
-            const index = number - 1;
-
-            return (
-              <button
-                key={number}
-                type="button"
-                onClick={() => setSelectedBackground(index)}
-                className={`px-2 rounded-sm cursor-pointer transition-all ${
-                  selectedBackground === index
-                    ? "bg-crimson-violet text-burn-pink scale-110"
-                    : "bg-crimson-violet/40 text-burn-pink/70 hover:bg-crimson-violet hover:text-burn-pink"
-                }`}
-              >
-                {number}
-              </button>
-            );
-          })}
-        </div> */}
-        <div>
-          <h1 className="font-arabic text-fluid-xl text-midnight-purple tracking-widest font-semibold mt-3 md:mt-8">
-            يسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
-          </h1>
-        </div>
+    <section className="flex flex-col h-dvh w-full md:max-w-2xl overflow-hidden">
+      <div className="mt-5 md:mt-1 shrink-0 text-center flex flex-col items-center justify-top">
+        <h1 className="font-arabic text-fluid-lg text-midnight-purple tracking-widest font-semibold mt-3 md:mt-8">
+          يسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
+        </h1>
+      </div>
+      <div className="flex flex-1 min-h-0 flex-col  items-center justify-evenly text-center">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-4 md:mt-6">
           <div className="flex flex-col">
             <p className="font-cg font-bold text-fluid-2xl text-midnight-purple tracking-wider leading-none">
@@ -88,17 +56,17 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
           together with our families,
           <br className="md:hidden block" /> we invite you to our Nikkah
         </p>
-        <div className="w-full flex justify-center items-start gap-4 md:gap-20 px-5 mt-3">
+        <div className="w-full flex justify-evenly items-start gap-4 md:gap-20 mt-3">
           <a
             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shaz+and+Renna+Wedding&dates=20261004T043000Z/20261004T083000Z&details=Join+us+for+our+wedding&location=Airport+Garden+Convention+Center%2C+Karipur"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex flex-col justify-center items-center cursor-pointer min-w-0"
           >
-            <div className="bg-crimson-violet rounded-3xl p-5 mb-2 shadow-lg">
-              <CalendarHeart className="text-background h-8 w-8 md:h-10 md:w-10" />
+            <div className="bg-crimson-violet rounded-lg p-3 mb-2 shadow-lg">
+              <CalendarHeart className="text-background h-9 w-9" />
             </div>
-            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base text-center">
+            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
               04 OCT 2026 <br />
               <span className="whitespace-nowrap">At 10 AM</span>
             </p>
@@ -120,14 +88,12 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
             rel="noopener noreferrer"
             className="flex-1 flex flex-col min-w-0 justify-center items-center cursor-pointer"
           >
-            <div className="bg-crimson-violet rounded-3xl p-5 cursor-pointer mb-2 shadow-lg">
-              <MapPinned className="text-background h-8 w-8 md:h-10 md:w-10" />
+            <div className="bg-crimson-violet rounded-lg p-3 cursor-pointer mb-2 shadow-lg">
+              <MapPinned className="text-background h-9 w-9" />
             </div>
-            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-base text-center">
+            <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
               Airport Garden <br />
-              <span className="whitespace-nowrap">
-                Convention Cntr, Karipur
-              </span>
+              <span className="whitespace-nowrap">Convention Center</span>
             </p>
             <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
               Open in Maps
@@ -140,7 +106,7 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
       </div>
 
       {/* RSVP Section */}
-      <div className="w-full self-center pb-5 mb-3">
+      <div className="w-full self-center pb-5 shrink-0">
         <div className="flex flex-col gap-2 ">
           {alreadyResponded ? (
             <span className="font-cg text-fluid-md text-center text-gray-600">

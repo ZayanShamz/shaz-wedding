@@ -31,8 +31,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-3 z-40 border-2 border-[#4C3032]" />
-      <main className="mx-auto flex flex-col items-center w-full">
+      {/* <div className="pointer-events-none fixed inset-x-0 top-0 z-40 h-3 backdrop-blur-xs" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-3 backdrop-blur-xs" />
+      <div className="pointer-events-none fixed left-0 top-3 bottom-3 z-40 w-3 backdrop-blur-xs" />
+      <div className="pointer-events-none fixed right-0 top-3 bottom-3 z-40 w-3 backdrop-blur-xs" />
+      <div className="pointer-events-none fixed inset-3 z-40 border-2 border-crimson-violet" /> */}
+      <div className="pointer-events-none fixed inset-3 z-40 border-2 border-crimson-violet" />
+      <main className="mx-auto flex flex-col items-center w-full px-4 md:px-6">
         <Hero
           onSelect={handleSelect}
           onLeaveNote={() => setNoteDrawerOpen(true)}

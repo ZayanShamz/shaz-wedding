@@ -1,146 +1,99 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Input } from "@/components/ui/input";
-import { MoveRight, UserMinus, UserPlus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { backgrounds } from "@/app/backgrounds/backgrounds";
+
+import { Separator } from "@/components/ui/separator";
+import { Calendar, CalendarHeart, Link, MapPinned } from "lucide-react";
 
 function TestPoint() {
-  const [currentName, setCurrentName] = useState("");
-  const [names, setNames] = useState<string[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [selectedBackground, setSelectedBackground] = useState(0);
 
-  const hasAddedFirstName = names.length > 0;
+  useEffect(() => {
+    document.body.style.backgroundImage = backgrounds[selectedBackground];
 
-  const handleAdd = () => {
-    const trimmed = currentName.trim();
-    if (!trimmed) return;
-
-    setNames((prev) => [...prev, trimmed]);
-    setCurrentName("");
-    inputRef.current?.focus();
-  };
-
-  const updateAddedName = (index: number, value: string) => {
-    setNames((prev) => prev.map((n, i) => (i === index ? value : n)));
-  };
-
-  const removeAddedName = (index: number) => {
-    setNames((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const handleSkip = () => {
-    setNames([]);
-    setCurrentName("");
-  };
+    return () => {
+      document.body.style.backgroundImage = "";
+    };
+  }, [selectedBackground]);
 
   return (
     <>
-      <div className="flex align-center justify-center min-h-dvh w-full bg-amber-200">
-        <div className="flex flex-col align-center justify-center min-h-dvh max-w-2xl bg-amber-200">
-          <Drawer>
-            <DrawerTrigger asChild>
-              <Button variant="outline" className="cursor-pointer">
-                Scrollable Content
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="mx-auto max-w-lg w-full">
-              <DrawerHeader>
-                <DrawerTitle>
-                  <p className="text-fluid-lg font-cg font-semibold text-midnight-purple">
-                    Scribble your names
-                  </p>
-                </DrawerTitle>
-                <DrawerDescription></DrawerDescription>
-              </DrawerHeader>
-              <div className="no-scrollbar overflow-y-auto p-4">
-                <div className="flex flex-col gap-4 justify-center items-center">
-                  {names.map((name, index) => (
-                    <div
-                      key={index}
-                      className="relative flex items-center w-90 leading-normal"
+      <div className="flex align-center justify-center min-h-dvh w-full">
+        <div className="flex flex-col align-center justify-center min-h-dvh max-w-2xl">
+          <div className="w-full h-full flex items-center justify-center p-4">
+            <div className="bg-crimson-violet/20 border border-crimson-violet/30 rounded-lg p-4">
+              <p className="text-midnight-purple text-fluid-md text-center">
+                Selected Background: {selectedBackground + 1}
+              </p>
+              <div className="flex flex-row gap-2 align-center justify-center mt-2">
+                {[1, 2, 3, 4, 5, 6].map((number) => {
+                  const index = number - 1;
+
+                  return (
+                    <button
+                      key={number}
+                      type="button"
+                      onClick={() => setSelectedBackground(index)}
+                      className={`px-2 rounded-sm cursor-pointer transition-all ${
+                        selectedBackground === index
+                          ? "bg-crimson-violet text-burn-pink scale-110"
+                          : "bg-crimson-violet/40 text-burn-pink/70 hover:bg-crimson-violet hover:text-burn-pink"
+                      }`}
                     >
-                      <Input
-                        type="text"
-                        className="w-full pr-10"
-                        value={name}
-                        onChange={(e) => updateAddedName(index, e.target.value)}
-                      />
-                      <UserMinus
-                        aria-label="Remove name"
-                        className="absolute right-3 h-5 w-5 cursor-pointer"
-                        onClick={() => removeAddedName(index)}
-                      />
-                    </div>
-                  ))}
-                  <div className="relative flex items-center w-90 leading-normal ">
-                    <Input
-                      ref={inputRef}
-                      type="text"
-                      placeholder="Your name if you may"
-                      className="w-full pr-10"
-                      value={currentName}
-                      onChange={(e) => setCurrentName(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          handleAdd();
-                        }
-                      }}
-                    />
-                    {hasAddedFirstName && (
-                      <UserPlus
-                        className="absolute right-3 h-5 w-5 cursor-pointer"
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={handleAdd}
-                      />
-                    )}
-                  </div>
-                  {!hasAddedFirstName && (
-                    <div className="w-90 flex items-center justify-end">
-                      <p
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={handleAdd}
-                        className="text-sm text-white/50 cursor-pointer hover:underline"
-                      >
-                        Add more guests{" "}
-                        <MoveRight className="inline-block ms-0.5 h-full w-4" />
-                      </p>
-                    </div>
-                  )}
-                </div>
+                      {number}
+                    </button>
+                  );
+                })}
               </div>
-              <DrawerFooter>
-                <DrawerClose asChild>
-                  <Button
-                    className="bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-10 cursor-pointer
-                focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple"
-                    variant="outline"
-                    onClick={handleSkip}
-                  >
-                    Skip
-                  </Button>
-                </DrawerClose>
-                <Button
-                  className="bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
-                focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple py-5 px-10 cursor-pointer"
-                  variant="outline"
-                >
-                  Submit
-                </Button>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+            </div>
+          </div>
+
+          <div className="w-full flex justify-center items-start gap-4 md:gap-20 px-5 mt-3">
+            <a
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shaz+and+Renna+Wedding&dates=20261004T043000Z/20261004T083000Z&details=Join+us+for+our+wedding&location=Airport+Garden+Convention+Center%2C+Karipur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex flex-col justify-center items-center cursor-pointer min-w-0"
+            >
+              <div className="bg-crimson-violet rounded-3xl p-5 mb-2 shadow-lg">
+                <CalendarHeart className="text-background h-8 w-8" />
+              </div>
+              <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
+                04 OCT 2026 <br />
+                <span className="whitespace-nowrap">At 10 AM</span>
+              </p>
+              <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
+                Add to Calendar
+                <Calendar className="inline-block ms-1 h-full w-3" />
+              </p>
+            </a>
+            <div className="hidden md:flex h-full md:self-center md:mt-0 mt-3">
+              <Separator
+                orientation="vertical"
+                className="bg-[#4C3032]/30 h-24"
+              />
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/JoyyoUn8gNfYwEi78"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex flex-col min-w-0 justify-center items-center cursor-pointer"
+            >
+              <div className="bg-crimson-violet rounded-3xl p-5 cursor-pointer mb-2 shadow-lg">
+                <MapPinned className="text-background h-8 w-8 md:h-8 md:w-8" />
+              </div>
+              <p className="font-charis font-medium leading-tight text-midnight-purple text-fluid-sm text-center">
+                Airport Garden <br />
+                <span className="whitespace-nowrap">Convention Center</span>
+              </p>
+              <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
+                Open in Maps
+                <Link className="inline-block ms-1 h-full w-3" />
+              </p>
+            </a>
+          </div>
         </div>
       </div>
     </>
