@@ -58,7 +58,7 @@ function Hero({
             </p>
           </div>
         </div>
-        <p className="font-cg italic text-fluid-base tracking-wide text-choco-plum md:my-4 leading-tight">
+        <p className="font-cg font-medium italic text-fluid-md tracking-wide text-choco-plum md:my-4 leading-tight">
           together with our families,
           <br className="md:hidden block" /> we invite you to our Nikkah
         </p>
