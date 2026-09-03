@@ -18,9 +18,15 @@ type HeroProps = {
   onSelect: (value: "yes" | "no") => void;
   onLeaveNote: () => void;
   alreadyResponded: boolean;
+  hasChecked: boolean;
 };
 
-function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
+function Hero({
+  onSelect,
+  onLeaveNote,
+  alreadyResponded,
+  hasChecked,
+}: HeroProps) {
   return (
     <section className="flex flex-col h-dvh w-full md:max-w-2xl overflow-hidden">
       <div className="mt-5 md:mt-1 shrink-0 text-center flex flex-col items-center justify-top">
@@ -108,7 +114,11 @@ function Hero({ onSelect, onLeaveNote, alreadyResponded }: HeroProps) {
       {/* RSVP Section */}
       <div className="w-full self-center pb-5 shrink-0">
         <div className="flex flex-col gap-2 ">
-          {alreadyResponded ? (
+          {!hasChecked ? (
+            // Reserve the same vertical space so nothing visually jumps once
+            // the real content appears a moment later.
+            <div className="h-14" />
+          ) : alreadyResponded ? (
             <span className="font-cg text-fluid-md text-center text-gray-600">
               You&apos;ve already responded, thank you!{" "}
               <Heart className="inline-block h-full w-4 text-crimson-violet fill-crimson-violet mb-1" />
