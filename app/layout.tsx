@@ -8,18 +8,11 @@ import {
   Amiri,
   Cormorant_Garamond,
   Charis_SIL,
-  Tangerine,
 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const tangerine = Tangerine({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-tangerine",
-});
 
 const charisSil = Charis_SIL({
   weight: "400",
@@ -82,7 +75,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         emilysCandy.variable,
         amiri.variable,
         cormorantGaramond.variable,
-        tangerine.variable,
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
