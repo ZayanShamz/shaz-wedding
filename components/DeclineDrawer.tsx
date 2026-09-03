@@ -118,16 +118,16 @@ function DeclineDrawer({
         <DrawerFooter>
           <DrawerClose asChild>
             <Button
-              className="bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
+              className="font-cg font-medium bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple"
               variant="outline"
               onClick={handleClose}
             >
-              Changed my mind
+              Wait
             </Button>
           </DrawerClose>
           <Button
-            className="bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
+            className="font-cg font-medium bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple py-5 px-10 cursor-pointer"
             variant="outline"
             onClick={handleSubmit}

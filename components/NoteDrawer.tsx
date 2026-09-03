@@ -15,7 +15,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
-import { HatGlasses } from "lucide-react";
+import { HatGlasses, Heart } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 
 const NAME_MAX_LENGTH = 50;
@@ -45,7 +45,7 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
 
     const trimmedMessage = message.trim();
     if (!trimmedMessage) {
-      setError("What you submitting? there's nothing here!");
+      setError("What you submitting? There's nothing here!");
       return;
     }
     if (trimmedMessage.length > MESSAGE_MAX_LENGTH) {
@@ -82,7 +82,8 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
           <DrawerHeader>
             <DrawerTitle>
               <p className="text-fluid-lg font-cg font-semibold text-midnight-purple">
-                Thank you!
+                Thank you!{" "}
+                <Heart className="inline-block h-full w-4 text-crimson-violet fill-crimson-violet mb-1" />
               </p>
             </DrawerTitle>
             <DrawerDescription className="font-cg text-xl text-white/80 my-5">
@@ -110,14 +111,14 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
             <div className="flex flex-col gap-4 justify-center items-center">
               <div className="flex flex-col justify-center items-start gap-1 w-90 leading-normal ">
                 <Input
-                  placeholder="Your name if you may"
+                  placeholder="Let us know who you are"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   maxLength={NAME_MAX_LENGTH}
                 />
                 <div className="pl-3 flex items-center gap-1 text-xs text-gray-700">
-                  <HatGlasses className="h-4 w-4" /> Stay anonymous if you want,
-                  no one will know.
+                  <HatGlasses className="h-4 w-4" /> Or stay anonymous if you
+                  want, no one will know.
                 </div>
               </div>
               <div className="flex flex-col items-center w-90 leading-normal ">
@@ -131,13 +132,15 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
                   {message.length}/{MESSAGE_MAX_LENGTH}
                 </div>
               </div>
-              {error && <p className="text-fluid-sm text-red-100">{error}</p>}
+              {error && (
+                <p className="font-cg text-fluid-sm text-background">{error}</p>
+              )}
             </div>
           </div>
           <DrawerFooter>
             <DrawerClose asChild>
               <Button
-                className="bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
+                className="font-cg font-medium bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple"
                 variant="outline"
                 onClick={handleClose}
@@ -146,13 +149,13 @@ function NoteDrawer({ open, onOpenChange }: NoteDrawerProps) {
               </Button>
             </DrawerClose>
             <Button
-              className="bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
+              className="font-cg font-medium bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple py-5 px-10 cursor-pointer"
               variant="outline"
               onClick={handleSubmit}
               disabled={submitting}
             >
-              {submitting ? "Submitting..." : "Submit"}
+              {submitting ? "Sending..." : "Send"}
             </Button>
           </DrawerFooter>
         </DrawerContent>

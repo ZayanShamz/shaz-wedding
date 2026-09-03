@@ -29,8 +29,8 @@ function Hero({
 }: HeroProps) {
   return (
     <section className="flex flex-col h-dvh w-full md:max-w-2xl overflow-hidden">
-      <div className="mt-5 md:mt-1 shrink-0 text-center flex flex-col items-center justify-top">
-        <h1 className="font-arabic text-fluid-lg text-midnight-purple tracking-widest font-semibold mt-3 md:mt-8">
+      <div className="mt-8 shrink-0 text-center flex flex-col items-center justify-top">
+        <h1 className="font-arabic text-fluid-lg text-midnight-purple tracking-widest font-semibold">
           يسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
         </h1>
       </div>
@@ -41,7 +41,7 @@ function Hero({
               SHAZ SHAHUL
             </p>
             <p className="font-cg italic font-medium text-fluid-sm text-zinc-600">
-              S/O P P Shahul Hameed And Absath Mullaveetil
+              S/O P. P. Shahul Hameed And Absath Mullaveetil
             </p>
           </div>
 
@@ -54,11 +54,11 @@ function Hero({
               RENNA RAHMATH
             </h2>
             <p className="font-cg italic font-medium text-fluid-sm text-zinc-600">
-              D/O Rahmathulla C And Haseena A K
+              D/O Rahmathulla C. And Haseena A. K.
             </p>
           </div>
         </div>
-        <p className="font-charis font-medium text-fluid-md tracking-wide text-zinc-800 md:my-4 leading-tight">
+        <p className="font-cg italic text-fluid-base tracking-wide text-choco-plum md:my-4 leading-tight">
           together with our families,
           <br className="md:hidden block" /> we invite you to our Nikkah
         </p>
@@ -76,7 +76,7 @@ function Hero({
               04 OCT 2026 <br />
               <span className="whitespace-nowrap">At 10 AM</span>
             </p>
-            <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
+            <p className="font-mono text-fluid-xs text-gray-600">
               Add to Calendar
               <Calendar className="inline-block ms-1 h-full w-3" />
             </p>
@@ -101,7 +101,7 @@ function Hero({
               Airport Garden <br />
               <span className="whitespace-nowrap">Convention Center</span>
             </p>
-            <p className="font-mono cursor-pointer text-fluid-xs text-gray-600">
+            <p className="font-mono text-fluid-xs text-gray-600">
               Open in Maps
               <Link className="inline-block ms-1 h-full w-3" />
             </p>
@@ -125,7 +125,7 @@ function Hero({
             </span>
           ) : (
             <>
-              <span className="font-cg font-semibold text-fluid-sm text-center text-choco-plum tracking-wide">
+              <span className="font-cg font-semibold text-fluid-base text-center text-choco-plum tracking-wide">
                 Will you be attending?
               </span>
               <div className="flex justify-center gap-3">

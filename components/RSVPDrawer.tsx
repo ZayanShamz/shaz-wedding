@@ -180,7 +180,7 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
               )}
 
               <div className="flex items-center justify-between w-90 mt-1">
-                <span className="text-fluid-base text-white/80 font-cg">
+                <span className="text-fluid-md text-white/80 font-cg">
                   Total guests
                 </span>
                 <div className="flex items-center gap-3">
@@ -193,7 +193,7 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <span className="text-fluid-base font-mono w-6 text-center tabular-nums">
+                  <span className="text-fluid-md text-background font-mono w-6 text-center tabular-nums">
                     {guestCount}
                   </span>
                   <button
@@ -213,7 +213,7 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
           <DrawerFooter>
             <DrawerClose asChild>
               <Button
-                className="bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
+                className="font-cg font-medium bg-transparent text-fluid-base text-midnight-purple hover:bg-muted/80 py-5 px-5 cursor-pointer
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple"
                 variant="outline"
                 onClick={handleSkip}
@@ -222,7 +222,7 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
               </Button>
             </DrawerClose>
             <Button
-              className="bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
+              className="font-cg font-medium bg-midnight-purple text-amber-50 border-black/60 hover:bg-midnight-violet hover:text-amber-50
                 focus-visible:border-midnight-purple/60 focus-visible:ring focus-visible:ring-midnight-purple py-5 px-10 cursor-pointer"
               variant="outline"
               onClick={handleSubmit}
