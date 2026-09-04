@@ -57,11 +57,11 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer-content fixed z-50 flex h-auto flex-col bg-transparent p-4 text-sm",
+          "group/drawer-content fixed z-50 flex flex-col bg-transparent p-4",
           "before:absolute before:inset-3.5 before:-z-10 before:rounded-4xl before:border before:border-black/10",
-          "before:bg-black/5 before:backdrop-blur-2xl before:shadow-2xl befor:shadow-black/30",
+          "before:bg-black/5 before:backdrop-blur-2xl before:shadow-2xl before:shadow-black/30",
           "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 md:data-[vaul-drawer-direction=bottom]:bottom-20",
-          "data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh]",
+          "data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80dvh]",
           className,
         )}
         {...props}
@@ -87,7 +87,10 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-footer"
-      className={cn("mt-auto flex justify-around gap-2 py-4 px-3  ", className)}
+      className={cn(
+        "shrink-0 flex justify-around gap-2 py-4 px-3  ",
+        className,
+      )}
       {...props}
     />
   );

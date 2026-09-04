@@ -123,7 +123,7 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
             </DrawerTitle>
             <DrawerDescription></DrawerDescription>
           </DrawerHeader>
-          <div className="no-scrollbar overflow-y-auto p-4">
+          <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto p-4">
             <div className="flex flex-col gap-4 justify-center items-center">
               {names.map((name, index) => (
                 <div
