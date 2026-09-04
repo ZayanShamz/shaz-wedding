@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-
+import { useDrawerHistory } from "@/hooks/useDrawerHistory";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -31,6 +31,8 @@ function RSVPDrawer({ open, onOpenChange, onSubmitted }: RsvpDrawerProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useDrawerHistory(open, onOpenChange);
 
   const hasAddedFirstName = names.length > 0;
 
