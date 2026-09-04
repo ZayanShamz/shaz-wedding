@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { useDrawerHistory } from "@/hooks/useDrawerHistory";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -34,6 +35,8 @@ function DeclineDrawer({
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useDrawerHistory(open, onOpenChange);
 
   const handleClose = () => {
     setName("");
